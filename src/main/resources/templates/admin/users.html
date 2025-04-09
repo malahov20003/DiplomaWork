@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Администратор</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+
+    header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    form.inline {
+      display: inline;
+    }
+
+    input, select {
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+<header>Администратор</header>
+
+<h3>Создание нового пользователя</h3>
+
+<form action="/api/users/form" method="post">
+  <label>Роль:</label>
+  <select name="role">
+    <option value="MANAGER">Руководитель</option>
+    <option value="EMPLOYEE">Сотрудник</option>
+  </select>
+  &nbsp;
+  <label>ФИО:</label>
+  <input type="text" name="name" required>
+  &nbsp;
+  <button type="submit">Создать</button>
+</form>
+
+<h3>Список пользователей</h3>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>ФИО</th>
+    <th>Роль</th>
+    <th>Кабинет</th>
+    <th>Удалить</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Здесь будет динамический вывод через Thymeleaf или шаблонизатор (если нужен). Пока можно заменить на статичный -->
+  <tr>
+    <td>1</td>
+    <td>Иванов И.И.</td>
+    <td>MANAGER</td>
+    <td><a href="/manager/1">Открыть</a></td>
+    <td>
+      <form class="inline" method="post" action="/api/users/delete/1">
+        <button type="submit">Удалить</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

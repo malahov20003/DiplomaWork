@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Руководитель — Задания</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #eee;
+      padding: 20px;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    input, select {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="sidebar">
+  <h3>Руководитель</h3>
+  <ul>
+    <li><a href="tasks.html">Задания</a></li>
+    <li><a href="reports.html">Отчёты</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <h2>Назначение заданий</h2>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Сотрудники</th>
+      <th>Файл</th>
+      <th>Дата начала</th>
+      <th>Дата окончания</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        <select multiple>
+          <option>Сотрудник 1</option>
+          <option>Сотрудник 2</option>
+          <option>Сотрудник 3</option>
+        </select>
+      </td>
+      <td>
+        <input type="file">
+      </td>
+      <td>
+        <input type="date">
+      </td>
+      <td>
+        <input type="date">
+      </td>
+    </tr>
+    <!-- новые строки добавляются по кнопке -->
+    </tbody>
+  </table>
+
+  <br>
+  <button>Добавить задание</button>
+</div>
+</body>
+</html>
