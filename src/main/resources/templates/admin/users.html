@@ -1,57 +1,92 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Администратор</title>
+  <title>Личный кабинет администратора</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 30px;
+      margin: 40px;
+      background-color: #f8f9fa;
     }
 
     header {
-      font-size: 24px;
+      font-size: 28px;
       font-weight: bold;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 25px;
     }
 
     table {
       border-collapse: collapse;
       width: 100%;
-      margin-top: 30px;
+      margin-top: 20px;
     }
 
     th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
+      border: 1px solid #dee2e6;
+      padding: 12px;
       text-align: center;
     }
 
-    form.inline {
-      display: inline;
+    th {
+      background-color: #e9ecef;
     }
 
-    input, select {
-      padding: 5px;
+    form.inline {
+      display: inline-block;
+      margin: 0;
+    }
+
+    input, select, button {
+      padding: 7px;
+      margin: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .btn-delete {
+      color: white;
+      background-color: #dc3545;
+      border: none;
+    }
+
+    .btn-create {
+      background-color: #28a745;
+      color: white;
+      border: none;
+    }
+
+    .btn-link {
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 3px;
     }
   </style>
 </head>
 <body>
-<header>Администратор</header>
+
+<header>Личный кабинет администратора</header>
 
 <h3>Создание нового пользователя</h3>
 
-<form action="/api/users/form" method="post">
-  <label>Роль:</label>
-  <select name="role">
+<form action="/admin/create" method="post">
+  <label for="role">Роль:</label>
+  <select name="role" id="role" required>
     <option value="MANAGER">Руководитель</option>
     <option value="EMPLOYEE">Сотрудник</option>
   </select>
-  &nbsp;
-  <label>ФИО:</label>
-  <input type="text" name="name" required>
-  &nbsp;
-  <button type="submit">Создать</button>
+
+  <label for="name">ФИО:</label>
+  <input type="text" name="name" id="name" placeholder="Фамилия Имя Отчество" required>
+
+  <button type="submit" class="btn-create">Создать</button>
 </form>
 
 <h3>Список пользователей</h3>
@@ -62,20 +97,23 @@
     <th>ID</th>
     <th>ФИО</th>
     <th>Роль</th>
-    <th>Кабинет</th>
-    <th>Удалить</th>
+    <th>Личный кабинет</th>
+    <th>Удаление</th>
   </tr>
   </thead>
   <tbody>
-  <!-- Здесь будет динамический вывод через Thymeleaf или шаблонизатор (если нужен). Пока можно заменить на статичный -->
-  <tr>
-    <td>1</td>
-    <td>Иванов И.И.</td>
-    <td>MANAGER</td>
-    <td><a href="/manager/1">Открыть</a></td>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.id}">1</td>
+    <td th:text="${user.name}">Иванов Иван Иванович</td>
+    <td th:text="${user.role}">MANAGER</td>
     <td>
-      <form class="inline" method="post" action="/api/users/delete/1">
-        <button type="submit">Удалить</button>
+      <a th:href="@{/{role}/{id}(role=${user.role.name().toLowerCase()}, id=${user.id})}" class="btn-link">
+        Открыть кабинет
+      </a>
+    </td>
+    <td>
+      <form class="inline" method="post" th:action="@{/admin/delete/{id}(id=${user.id})}">
+        <button type="submit" class="btn-delete">Удалить</button>
       </form>
     </td>
   </tr>

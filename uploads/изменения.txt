@@ -1,0 +1,54 @@
+2025-04-12T20:21:01.246+03:00  INFO 6808 --- [nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-12T20:21:01.246+03:00  INFO 6808 --- [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-12T20:21:01.248+03:00  INFO 6808 --- [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select t1_0.id,t1_0.assigned_to_id,t1_0.deadline,t1_0.description,t1_0.file_path,t1_0.report_file,t1_0.start_date,t1_0.status from task t1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+2025-04-12T20:21:16.290+03:00  WARN 6808 --- [nio-8082-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-04-12T20:21:16.480+03:00  WARN 6808 --- [nio-8082-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+2025-04-12T20:21:18.953+03:00  WARN 6808 --- [nio-8082-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-04-12T20:21:19.199+03:00  WARN 6808 --- [nio-8082-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+2025-04-12T20:21:22.283+03:00  WARN 6808 --- [nio-8082-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-04-12T20:21:22.451+03:00  WARN 6808 --- [nio-8082-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0
+Hibernate: select t1_0.id,t1_0.assigned_to_id,t1_0.deadline,t1_0.description,t1_0.file_path,t1_0.report_file,t1_0.start_date,t1_0.status from task t1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: insert into task (assigned_to_id,deadline,description,file_path,report_file,start_date,status) values (?,?,?,?,?,?,?)
+Hibernate: insert into task (assigned_to_id,deadline,description,file_path,report_file,start_date,status) values (?,?,?,?,?,?,?)
+Hibernate: select t1_0.id,t1_0.assigned_to_id,t1_0.deadline,t1_0.description,t1_0.file_path,t1_0.report_file,t1_0.start_date,t1_0.status from task t1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: insert into task (assigned_to_id,deadline,description,file_path,report_file,start_date,status) values (?,?,?,?,?,?,?)
+Hibernate: insert into task (assigned_to_id,deadline,description,file_path,report_file,start_date,status) values (?,?,?,?,?,?,?)
+Hibernate: select t1_0.id,t1_0.assigned_to_id,t1_0.deadline,t1_0.description,t1_0.file_path,t1_0.report_file,t1_0.start_date,t1_0.status from task t1_0
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+Hibernate: select u1_0.id,u1_0.name,u1_0.role,u1_0.smtp_email,u1_0.smtp_password from user u1_0 where u1_0.id=?
+2025-04-12T20:23:16.882+03:00  INFO 6808 --- [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-12T20:23:16.888+03:00  INFO 6808 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-12T20:23:16.934+03:00  INFO 6808 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-12T20:23:16.936+03:00 TRACE 6808 --- [ionShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@27d53749] for TypeConfiguration
+2025-04-12T20:23:16.936+03:00 DEBUG 6808 --- [ionShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@22988a00] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@27d53749]
+2025-04-12T20:23:16.940+03:00  INFO 6808 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-12T20:23:16.965+03:00  INFO 6808 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+Process finished with exit code 130

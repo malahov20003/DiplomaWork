@@ -1,10 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Назначенные задания</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script>
+        function uploadReport(taskId, userId) {
+            const input = document.getElementById('report-file-' + taskId);
+            const file = input?.files?.[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append("taskId", taskId);
+            formData.append("userId", userId);
+            formData.append("file", file);
+
+            fetch('/api/tasks/reupload-report', {
+                method: 'POST',
+                body: formData
+            })
+                .then(res => res.text())
+                .then(text => {
+                    const status = document.getElementById('upload-status-' + taskId);
+                    status.innerText = text;
+                    status.style.display = 'block';
+
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                        location.reload(); // ⬅️ Обновляем страницу, чтобы сразу отобразить отчёт
+                    }, 2500);
+                })
+                .catch(err => {
+                    const status = document.getElementById('upload-status-' + taskId);
+                    status.innerText = 'Ошибка: ' + err;
+                    status.style.display = 'block';
+                });
+        }
+    </script>
 </head>
 <body>
-$END$
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 bg-light vh-100 p-3">
+            <h4>Сотрудник</h4>
+            <a th:href="@{/employee/dashboard.html(userId=${userId})}" class="btn btn-outline-dark w-100 mb-2">Назначенные
+                задания</a>
+        </div>
+        <div class="col-md-10">
+            <h1 class="mt-3">Назначенные задания</h1>
+            <table class="table table-bordered mt-4">
+                <thead class="table-light">
+                <tr>
+                    <th>Описание</th>
+                    <th>Дата начала</th>
+                    <th>Срок сдачи</th>
+                    <th>Файл задания</th>
+                    <th>Статус</th>
+                    <th>Отчёт</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="userTask : ${userTasks}">
+                    <td th:text="${userTask.task.description}"></td>
+                    <td th:text="${userTask.task.startDate}"></td>
+                    <td th:classappend="${userTask.uploadDate != null and userTask.uploadDate.isAfter(userTask.task.deadline)} ? 'text-danger' : ''"
+                        th:text="${userTask.task.deadline}"></td>
+                    <td>
+                        <span th:if="${userTask.task.filePath == null or userTask.task.filePath.isEmpty()}"
+                              class="text-muted" onclick="alert('Файл не прикреплён');" style="cursor: pointer;">Файл не прикреплён</span>
+                        <div th:if="${userTask.task.filePath != null and !userTask.task.filePath.isEmpty()}">
+                            <a class="btn btn-sm btn-outline-primary"
+                               th:href="@{'/api/tasks/download/' + ${userTask.task.filePath}}"
+                               target="_blank">
+                                Скачать файл
+                            </a>
+                        </div>
+                    </td>
+
+                    <td>
+                        <span th:if="${userTask.status.name() == 'COMPLETED'}" class="badge bg-success" th:text="${userTask.status}"></span>
+                        <span th:if="${userTask.status.name() == 'ASSIGNED'}" class="badge bg-primary" th:text="${userTask.status}"></span>
+                        <span th:if="${userTask.status.name() != 'ASSIGNED' and userTask.status.name() != 'COMPLETED'}"
+                              class="badge bg-secondary"
+                              th:text="${userTask.status}"></span>
+                    </td>
+
+
+                    <td>
+                        <!-- Форма загрузки отчёта -->
+                        <form onsubmit="event.preventDefault(); uploadReport([[${userTask.task.id}]], [[${userTask.user.id}]]);">
+                            <input type="file" class="form-control mb-1" th:id="'report-file-' + ${userTask.task.id}"
+                                   required>
+                            <button type="submit" class="btn btn-sm btn-primary">Загрузить отчёт</button>
+                            <div class="text-info small mt-1" th:id="'upload-status-' + ${userTask.task.id}"
+                                 style="display: none"></div>
+                        </form>
+
+                        <!-- Если уже есть отчёт -->
+                        <div th:if="${userTask.reportFile != null and !userTask.reportFile.isEmpty()}">
+                            <strong>Файл:</strong>
+                            <a th:href="@{'/api/tasks/download-report/' + ${#urls.encode(userTask.reportFile)}}"
+                               target="_blank">Скачать отчёт</a>
+
+                        </div>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,2 +1,5 @@
-package com.example.diplomawork.enums;public class Role {
+package com.example.diplomawork.enums;
+
+public enum Role {
+    ADMIN, MANAGER, EMPLOYEE, SUPPORT
 }
